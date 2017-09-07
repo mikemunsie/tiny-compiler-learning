@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tiny Compiler Learning</title>
+</head>
+<body>
+  <!-- Lazy Man's global classes -->
+  <script src="compiler/tokenizer.js"></script>
+  <script src="compiler/parser.js"></script>
+  <script>
+    const tokens = (tokenizer(`
+      (add 2 (subtract 4 2))
+    `));
+    const ast = parser(tokens);
+    console.log({tokens, ast });
+  </script>
+</body>
+</html>
