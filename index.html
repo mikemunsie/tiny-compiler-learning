@@ -8,12 +8,19 @@
   <!-- Lazy Man's global classes -->
   <script src="compiler/tokenizer.js"></script>
   <script src="compiler/parser.js"></script>
+  <script src="compiler/transformer.js"></script>
+  <script src="compiler/traverser.js"></script>
+  <script src="compiler/codeGenerator.js"></script>
+  <script src="compiler/compiler.js"></script>
   <script>
     const tokens = (tokenizer(`
       (add 2 (subtract 4 2))
+      (add 8 (subtract 4 (add 2 8 2)))
     `));
     const ast = parser(tokens);
-    console.log({tokens, ast });
+    const newAst = transformer(ast);
+    const output = codeGenerator(newAst);
+    console.log({tokens, ast, newAst, output });
   </script>
 </body>
 </html>
